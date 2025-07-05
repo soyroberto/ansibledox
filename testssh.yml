@@ -1,0 +1,10 @@
+---
+- name: Test SSH connectivity with password
+  hosts: ubuntu_containers
+  gather_facts: no  # Faster test
+  vars_files:
+    - vault/secrets.yml  # Ensure this file contains ansible_ssh_pass variable
+
+  tasks:
+    - name: Check if we can connect
+      ansible.builtin.ping:

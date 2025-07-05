@@ -1,0 +1,6 @@
+# SSH keys
+*.key
+*.pem
+
+#macos
+.DS_Store
