@@ -1,0 +1,16 @@
+---
+- name: Install cowsay on pair_1 containers
+  hosts: pair_1  # Targets only ubuntu0 and ubuntu1
+  become: yes    # Run as root
+  vars_files:
+    - vault/secrets.yml  # Ensure this file contains ansible_ssh_pass variable
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install cowsay
+      apt:
+        name: cowsay
+        state: present

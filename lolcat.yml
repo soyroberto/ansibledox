@@ -1,0 +1,21 @@
+
+- name: Install text tools on pair_3
+  hosts: pair_3
+  become: yes
+  vars_files:
+    - vault/secrets.yml  # Ensure this file contains ansible_ssh_pass variable
+
+  tasks:
+    - name: Install Python3 and pip
+      apt:
+        name: [python3-pip]
+        update_cache: yes
+
+    - name: Install basic tools
+      apt:
+        name: [lolcat, figlet, bat, fd-find, ripgrep, htop,cmatrix]
+        update_cache: yes
+
+    - name: Install httpie
+      apt:
+          name: httpie

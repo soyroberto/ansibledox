@@ -1,0 +1,20 @@
+---
+- name: Install zsh on pair_2 containers
+  hosts: pair_2  # Targets only ubuntu2 and ubuntu3
+  become: yes    # Run as root
+  vars_files:
+    - vault/secrets.yml  # Load your SSH password (if using password auth)
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install zsh and git (for oh-my-zsh)
+      apt:
+        name: [zsh, git]
+        state: present
+
+    - name: Set zsh as default shell
+      shell: chsh -s $(which zsh) {{ ansible_user }}
+      when: ansible_user == 'root'  # Only if running as root

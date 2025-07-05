@@ -1,0 +1,24 @@
+---
+- name: Install text tools on pair_3
+  hosts: pair_3
+  become: yes
+  vars_files:
+    - vault/secrets.yml  # Ensure this file contains ansible_ssh_pass variable
+  tasks:
+    - name: Check lolcat installation
+      command: lolcat --version
+      register: lolcat_test
+      ignore_errors: yes  # Continue even if tool missing
+      changed_when: false
+
+    - name: Check figlet installation
+      command: figlet --version
+      register: figlet_test
+      ignore_errors: yes
+      changed_when: false
+
+    - name: Show test results
+      debug:
+        msg: |
+          lolcat: {{ lolcat_test.stdout | default('NOT FOUND') }}
+          figlet: {{ figlet_test.stdout | default('NOT FOUND') }}
