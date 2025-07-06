@@ -14,6 +14,11 @@
 - [Best Practices](#best-practices)
 - [Configuration Reference](#configuration-reference)
 - [Advanced Usage](#advanced-usage)
+### Note: Create your own password for the root user in the containers and SSH to them prior to deployment or it will fail, also, I'm using SSH passsword auth. I will not share the password I'm using for the lab, obviously 😼. Add the password to the secrets.txt file. Do this:
+```
+ansible-vault create vault/secrets.yml
+ansible-vault encrypt vault/secrets.yml
+```
 
 ## Overview
 
