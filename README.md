@@ -1,9 +1,3 @@
-# ansibledox
-An exercise of managing Docker containers with Ansible
-
-
-![alt text](ansiblewdox.jpg)
-
 # Ansibledox: Docker-Based Ansible Learning Environment
 
 ![Ansible Infrastructure](ansiblewdox.jpg)
